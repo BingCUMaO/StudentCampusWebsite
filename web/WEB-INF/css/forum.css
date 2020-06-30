@@ -1,0 +1,304 @@
+/* by 吴柏龙 */
+#forumContent {
+    margin-top: 1em;
+    border: 1px gray solid;
+    padding: 10px;
+    width: 900px;
+    background-color: #ffffff;
+    box-shadow: rgb(0, 0, 0, 0.5) 1px 1px 5px;
+}
+
+#forumPost {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 10px;
+}
+#postTitleBox {
+    width: 560px;
+    display: flex;
+    flex-direction: column;
+}
+
+.labelHead {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 560px;
+    height: 2em;
+
+}
+
+.labelHead>span:first-child {
+    margin-left: 1em;
+}
+
+.labelHead>span {
+    margin-right: 1em;
+}
+
+#postTitleButton {
+    display: flex;
+    flex-direction: column;
+}
+
+#postTitleButton>span {
+    width: 548px;
+    padding: 10px 0 10px 10px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/* 作者 */
+#authorLabelBox {
+    display: flex;
+    flex-direction: column;
+    width: 240px;
+    height: 2em;
+}
+
+#authorLabelBox>#authorLabel {
+    flex-shrink: 0;
+    display: block;
+    text-align: center;
+    height: 2em;
+    width: 240px;
+    color: gray;
+}
+
+#author {
+    display: flex;
+    flex-direction: column;
+}
+
+#author>span {
+    display: block;
+    height: 21px;
+    width: 240px;
+    padding: 10px 0 10px 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    text-align: center;
+}
+
+/* 发帖时间 */
+#pubdateBox {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+#pubdateBox>span:first-child {
+    height: 32px;
+    text-align: center;
+    padding: 0;
+    border: 0;
+
+}
+
+#pubdateBox>span {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: 21px;
+    padding: 10px 0 10px 0;
+}
+#theUserDynamicBox {
+    box-shadow: rgb(0, 0, 0, 0.5) 1px 1px 5px;
+    /* outline: 1px solid red; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+/* 回顶部 */
+#backHeadBox {
+    display: none;
+    position: fixed;
+    top: 0;
+    right: 30px;
+}
+#backHeadBox>img {
+    cursor: pointer;
+    width: 50px;
+    transition: ease-in 1s;
+}
+#backHeadBox>img:hover {
+    cursor: pointer;
+    margin-top: -10px;
+}
+/* 用户名与头像 */
+#userBox {
+    /* outline: 1px purple dashed; */
+    margin-top: 2em;
+    width: 700px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.438);
+    border-top-left-radius: 100%;
+    border-top-right-radius: 100%;
+}
+
+.userAvatar {
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+}
+
+#userBox>a span {
+    color: black;
+    width: 73px;
+    text-align: center;
+    display: block;
+}
+
+/* 分享动态栏 */
+#shareDynamicBox {
+    background-color: rgba(0, 0, 0, 0.438);
+    display: flex;
+    padding-top: 1em;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 700px;
+
+}
+
+#shareDynamicBox>input {
+    margin: 0 0 0 10px;
+    width: 500px;
+    height: 3em;
+}
+
+#shareDynamicBox>div {
+    margin: 0 0 0 10px;
+    margin-top: 4px;
+    width: 500px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+#shareDynamicBox>div>img {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+
+}
+.otherUserDynamicBox {
+    background-color: rgba(0, 0, 0, 0.438);
+    width: 700px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.otherUserDynamicBoxT {
+    background-color: #ffffff;
+    position: relative;
+    width: 500px;
+    /* outline: 1px purple solid; */
+    border-top-left-radius: 35px;
+    border-top-right-radius: 5px;
+}
+
+.otherUserDynamicBoxT {
+    position: relative;
+
+}
+
+.otherUserDynamicBoxT>img {
+    height: 30px;
+    width: 30px;
+    position: absolute;
+    right: 10px;
+    bottom: 5px;
+    cursor: pointer;
+}
+
+.otherUserDynamicBoxT>.moreNarBar {
+    display: none;
+    flex-direction: column;
+    background-color: rgb(63, 60, 60);
+    color: green;
+    font-size: 20px;
+    font-weight: 700;
+    position: absolute;
+    top: 84px;
+    right: 14px;
+    z-index: 1;
+    user-select: none;
+    cursor: pointer;
+    border-radius: 5px;
+    box-shadow: gray 1px 1px 10px;
+}
+
+.otherUserDynamicBoxT>.moreNarBar>span {
+    margin: 10px;
+}
+
+.otherUserDynamicBoxT>.moreNarBar>span:active {
+    color: #ffffff;
+
+}
+.otherUserDynamicBoxT>a {
+    color: green;
+}
+/* 箭头 */
+.otherUserDynamicBoxT>.moreNarBar>span:first-child::after {
+    content: "";
+    display: block;
+    border-top: 1px solid #e5e9ef;
+    border-left: 1px solid #e5e9ef;
+    -webkit-transform: rotate(45deg);
+    transform: rotate(45deg);
+    width: 8px;
+    height: 8px;
+    position: absolute;
+    top: -5px;
+    right: 6px;
+    background: rgb(63, 60, 60);
+}
+.otherUserDynamicBoxT>a>.dynamicUserName {
+    display: inline-block;
+    font-weight: 700;
+    font-size: 20px;
+    color: green;
+    margin-left: 1em;
+    max-width: 340px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.otherUserDynamicBoxB {
+    width: 500px;
+    background-color: #ffffff;
+    margin-bottom: 2em;
+    overflow-y: auto;
+    max-height: 250px;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+.otherUserDynamicBoxB>.boxBInformation {
+    padding: 10px 0 0 35px;
+    margin-right: 10px;
+    margin-bottom: 1em;
+    overflow: hidden;
+}
+.boxBInformation>span {
+    letter-spacing: 2px;
+    padding-left: 2em;
+}
+
+.boxBPicture {
+    margin-left: 2em;
+    max-width: 400px;
+}
+
+.boxBPicture>a>img {
+    max-width: 400px;
+}

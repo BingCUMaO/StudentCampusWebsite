@@ -1,0 +1,675 @@
+/* reset */
+* {
+    padding: 0;
+    margin: 0;
+}
+
+a {
+    text-decoration: none;
+}
+
+html,
+body {
+    height: 100%;
+    width: 100%;
+}
+
+body {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    background-color: rgba(250, 235, 215);
+    /* background-image: url('/前端项目/static/img/Konachan.com\ -\ 303442\ building\ chikuwa_moyashi\ city\ clouds\ nobody\ original\ scenic\ sky.jpg'); */
+}
+
+#bgPicture>img {
+    user-select: none;
+    width: 1903px;
+    height: 1080px;
+}
+
+#bgPicture {
+    position: relative;
+}
+
+.label {
+    transition: ease-in 2s;
+    background-color: rgba(131, 128, 128, 0.459);
+    border: 1px black solid;
+    border-radius: 10px;
+    padding-left: 8px;
+    padding-right: 8px;
+    cursor: pointer;
+}
+
+.label1 {
+    position: absolute;
+    top: 360px;
+    left: 750px;
+    font-size: 2em;
+}
+
+.label2 {
+    position: absolute;
+    top: 580px;
+    left: 635px;
+    font-size: 2em;
+}
+
+.spanJump {
+    position: relative;
+    top: -8px;
+}
+/*tv label*/
+.newsColumnPictureLabel {
+    position: absolute;
+    left: 11px;
+    top: 305px;
+    height: 70px;
+    width: 550px;
+    background: linear-gradient(rgba(0,0,0,0),rgba(0,0,0,0.9));
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    z-index: 2;
+}
+.newsColumnPictureLabel>a {
+    color: #ffffff;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.newsColumnPictureLabel>a>span {
+    display: block;
+    font-size: 24px;
+    margin-left: 20px;
+    letter-spacing: 2px;
+    color: #ffffffe0;
+}
+/* pzzxq */
+.pzzxq {
+    margin-top: 30px;
+    margin-bottom: 30px;
+    width: 100%;
+    /* width: 1903px; */
+    text-align: center;
+    font-weight: 700;
+    color: grey;
+    font-size: 3em;
+    letter-spacing: 1em;
+}
+
+.pzzxq span {
+    user-select: none;
+    padding-left: 45px;
+}
+
+/* content */
+.content {
+    user-select: none;
+    position: relative;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: row;
+    width: 100%;
+}
+
+.newsColumnCenter {
+    position: relative;
+    display: flex;
+    width: 572px;
+    height: 440px;
+}
+
+.newsColumnCenter>a {
+    z-index: 1;
+}
+
+.TVborder {
+    user-select: none;
+    position: absolute;
+}
+
+.newsColumnPicture {
+    position: absolute;
+    background-color: grey;
+    top: 12px;
+    left: 11px;
+    width: 550px;
+    height: 360px;
+    border-radius: 12px;
+}
+
+.newsColumnNewsLabel {
+    background-color: rgba(250, 235, 215, 0.493);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 24px;
+    color: black;
+    height: 200px;
+    width: 430px;
+    border-bottom: 5px solid #94070a;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.newsColumnNewsLabel a {
+    margin: 32px 20px auto 20px;
+    letter-spacing: 6px;
+    color: black;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.newsColumnNewsLabel span {
+    display: none;
+    position: absolute;
+    right: 6px;
+    bottom: 10px;
+    letter-spacing: 6px;
+    font-size: 20px;
+    font-weight: 700;
+    color: grey;
+}
+
+.newsColumnLeft {
+    margin-left: 100px;
+}
+
+.newsColumnRight {
+    margin-right: 100px;
+}
+
+.newsColumnLeft,
+.newsColumnRight {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    height: 440px;
+    width: 500px;
+}
+
+/*label*/
+.activity {
+    transition: ease-in 1s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    height: 600px;
+    width: 400px;
+    background-color: rgba(32, 167, 83, 0.658);
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    background-image: url("../static/img/background/activityBackground.jpg");
+
+}
+
+.activity:first-child {
+    position: absolute;
+    left: 200px;
+    top: 100px;
+    transform: rotate(-20deg);
+}
+
+.activity:last-child {
+    position: absolute;
+    right: 200px;
+    top: 100px;
+    transform: rotate(20deg);
+}
+
+.activity:hover {
+    z-index: 1;
+    transform: scale(1.2, 1.2);
+}
+
+.actPicture {
+    margin-top: 2em;
+    border-radius: 10px;
+    width: 360px;
+    height: 250px;
+}
+
+.actPicture>img {
+    border-radius: 10px;
+    width: 360px;
+    height: 250px;
+    background-color: grey;
+}
+
+.pictureLabel {
+    border-top: 5px brown solid;
+    margin-top: 2em;
+    background-color: rgba(206, 215, 223, 0.849);
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    width: 360px;
+    height: 250px;
+}
+
+.pictureLabel {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    font-size: 20px;
+}
+
+.pictureLabel span {
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.pictureLabel a {
+    color: grey;
+    position: absolute;
+    right: 1em;
+    bottom: 10px;
+}
+
+/* activity */
+.activity {
+    transition: ease-in 1s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    height: 600px;
+    width: 400px;
+    background-color: rgba(32, 167, 83, 0.658);
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.activity:first-child {
+    position: absolute;
+    left: 200px;
+    top: 100px;
+    transform: rotate(-20deg);
+}
+
+.activity:last-child {
+    position: absolute;
+    right: 200px;
+    top: 100px;
+    transform: rotate(20deg);
+}
+
+.activity:hover {
+    /* position: absolute; */
+    z-index: 1;
+    transform: scale(1.2, 1.2);
+}
+
+.actPicture {
+    margin-top: 2em;
+    border-radius: 10px;
+    width: 360px;
+    height: 250px;
+}
+
+.actPicture>img {
+    border-radius: 10px;
+    width: 360px;
+    height: 250px;
+    background-color: grey;
+}
+
+.pictureLabel {
+    border-top: 5px brown solid;
+    margin-top: 2em;
+    background-color: rgba(206, 215, 223, 0.849);
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    width: 360px;
+    height: 250px;
+}
+
+.pictureLabel {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    font-size: 20px;
+}
+
+.pictureLabel span {
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.pictureLabel a {
+    color: grey;
+    position: absolute;
+    right: 1em;
+    bottom: 10px;
+}
+
+.copyright {
+    user-select: none;
+    /* width: 1400px; */
+    display: flex;
+    justify-content: center;
+    position: relative;
+    top: 3em;
+}
+
+.copyright p {
+    font-size: 1em;
+    color: black;
+    margin: 1em 0 1em 0;
+
+    font-family: 'Roboto', sans-serif;
+}
+
+@media screen and (max-width: 1750px) {
+    .label {
+        display: none;
+    }
+
+    #bgPicture>img {
+        user-select: none;
+        width: 1560px;
+        height: 100%;
+    }
+
+    .newsColumnCenter {
+        width: 502px;
+        height: 390px;
+    }
+
+    .TVborder {
+        width: 522px;
+        height: 370px;
+    }
+
+    .newsColumnPicture {
+        top: 13px;
+        width: 500px;
+        height: 300px;
+    }
+
+    .newsColumnNewsLabel {
+        font-size: 20px;
+        /* height: 200px;
+width: 430px; */
+        height: 150px;
+        width: 370px;
+    }
+
+    .newsColumnNewsLabel span {
+        letter-spacing: 5px;
+        font-size: 16px;
+    }
+
+    .newsColumnLeft {
+        margin-left: 80px;
+    }
+
+    .newsColumnRight {
+        margin-right: 80px;
+    }
+
+    .newsColumnLeft,
+    .newsColumnRight {
+        width: 450px;
+        height: 380px;
+    }
+
+    .newsColumnPictureLabel {
+        top: 245px;
+        height: 70px;
+        width: 500px;
+    }
+
+    .newsColumnPictureLabel>a>span {
+        display: block;
+        font-size: 20px;
+        letter-spacing: 1px;
+    }
+}
+
+@media screen and (max-width: 1560px) {
+    #bgPicture>img {
+        user-select: none;
+        width: 1360px;
+        height: 100%;
+    }
+
+    .pzzxq {
+        margin-top: 10px;
+        margin-bottom: 10px;
+        width: 100%;
+        font-weight: 600;
+        font-size: 2em;
+    }
+
+    .pzzxq span {
+        padding-left: 40px;
+    }
+
+    .newsColumnCenter {
+        width: 415px;
+        height: 306px;
+    }
+
+    .TVborder {
+        width: 415px;
+        height: 306px;
+    }
+
+    .newsColumnPicture {
+        top: 9px;
+        left: 7px;
+        /* width: 500px;
+height: 300px; */
+        width: 400px;
+        height: 250px;
+    }
+
+    .newsColumnNewsLabel {
+        font-size: 14px;
+        /* height: 200px;
+width: 430px; */
+        height: 100px;
+        width: 300px;
+    }
+
+    .newsColumnNewsLabel a {
+        margin: 10px 2px 0 20px;
+        letter-spacing: 2px;
+        color: black;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .newsColumnNewsLabel span {
+        font-size: 10px;
+    }
+
+    .newsColumnLeft {
+        margin-left: 100px;
+    }
+
+    .newsColumnRight {
+        margin-right: 100px;
+    }
+
+    .newsColumnLeft,
+    .newsColumnRight {
+        width: 400px;
+        height: 270px;
+    }
+
+    .newsColumnPictureLabel {
+        left: 7px;
+        top: 210px;
+        height: 50px;
+        width: 400px;
+    }
+
+    .newsColumnPictureLabel>a>span {
+        display: block;
+        font-size: 1em;
+        letter-spacing: 0;
+    }
+}
+
+@media screen and (max-width: 1360px) {
+
+    #bgPicture>img {
+        width: 100%;
+        height: 100%;
+    }
+
+    .pzzxq {
+        margin-top: 10px;
+        margin-bottom: 10px;
+        width: 100%;
+        font-weight: 600;
+        font-size: 2em;
+    }
+
+    .pzzxq span {
+        user-select: none;
+        padding-left: 45px;
+    }
+
+    .newsColumnCenter {
+        width: 415px;
+        height: 306px;
+    }
+
+    .content {
+        user-select: none;
+        position: relative;
+        display: flex;
+        justify-content: center;
+        /* flex-direction: column; */
+        align-items: center;
+        flex-wrap: wrap;
+        width: 530px;
+        /* height: auto; */
+        /* width: 1903px; */
+    }
+
+    .newsColumnLeft {
+        margin-left: 0;
+    }
+
+    .newsColumnRight {
+        margin-right: 0;
+    }
+
+    .newsColumnLeft,
+    .newsColumnRight {
+        order: 1;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        height: 230px;
+        width: 230px;
+    }
+
+    .newsColumnNewsLabel {
+        font-size: 14px;
+        height: 100px;
+        width: 200px;
+    }
+
+    .newsColumnNewsLabel a {
+        height: 59px;
+        margin: 10px 2px 0 20px;
+        letter-spacing: 2px;
+        color: black;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .newsColumnCenter {
+        order: 0;
+    }
+
+    .activity {
+        display: flex;
+        transition: ease-in 1s;
+        flex-direction: column;
+        align-items: center;
+        position: relative;
+        height: 300px;
+        width: 200px;
+        background-color: rgba(32, 167, 83);
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .activity:first-child {
+        position: absolute;
+        left: 10%;
+        /* left: 60px; */
+        top: 10%;
+        transform: rotate(-20deg);
+    }
+
+    .activity:last-child {
+        position: absolute;
+        right: 10%;
+        top: 10%;
+        transform: rotate(20deg);
+    }
+
+    .activity:hover {
+        /* position: absolute; */
+        z-index: 1;
+        transform: scale(1.2, 1.2);
+    }
+
+    .actPicture {
+        margin-top: 1em;
+        border-radius: 5px;
+        width: 180px;
+        height: 125px;
+    }
+
+    .actPicture>img {
+        border-radius: 5px;
+        width: 180px;
+        height: 125px;
+        background-color: grey;
+    }
+
+    .pictureLabel {
+        border-top: 2px brown solid;
+        margin-top: 1em;
+        background-color: rgba(206, 215, 223, 0.849);
+        border-bottom-left-radius: 10px;
+        border-bottom-right-radius: 10px;
+        width: 180px;
+        height: 125px;
+    }
+
+    .pictureLabel {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        font-size: 10px;
+        width: 90%;
+    }
+
+    .pictureLabel span {
+        height: 16px;
+        width: 100%;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .pictureLabel a {
+        color: grey;
+        position: absolute;
+        right: 1em;
+        bottom: 10px;
+    }
+}

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>登陆</title>
+
+    <link rel="icon" href="../static/img/logoIcon.png"/>
+    <link rel="stylesheet" href="../css/loginStyle/global.css">
+    <link rel="stylesheet" href="../css/loginStyle/control-widget.css">
+
+    <script src="../js/vue.js"></script>
+    <script src="../js/jquery-3.5.1.js"></script>
+    <script src="../js/avatar-region.js"></script>
+    <script src="../js/username-region.js"></script>
+</head>
+<body>
+
+<div id="loginWindow" class="global">
+    <label ><h2>登陆</h2></label>
+    <avatar-region class="avatar-config"></avatar-region>
+    <br/><br/>
+    <username-region class="username-config"></username-region>
+
+    <div id="tips" class="tips"></div>
+
+    <table class="inputs" @click="cleanTips()">
+        <tr>
+            <td ><label for="uaccount" class="caption">账号：</label></td>
+            <td class="inputAccount"><input id="uaccount" v-model="account" type="text" placeholder="请输入账号"></td>
+        </tr>
+        <tr>
+            <td ><label for="pwd" class="caption">密码：</label></td>
+            <td class="inputPassword"><input id="pwd" v-model="password" type="password" placeholder="请输入密码"></td>
+        </tr>
+    </table>
+
+    <div class="buttons">
+        <a href="/registerPage" ><button class="register">注册</button></a>
+        <button @click="login()" class="login">Login</button>
+        <button @click="logout()" class="logout">注销</button>
+    </div>
+    <a href="/" class="toHomePosition"><button class="toHome">返回主页</button></a>
+
+</div>
+
+
+
+
+<!--用来动态添加标签-->
+<div id="dynamic"></div>
+
+<script>
+
+    var loginwindow = new Vue({
+        el: '#loginWindow',
+        data: {
+            account: "",
+            password: "",
+            failMsg500: "登录失败",
+            failMsg501: "您已登陆，若您想再次登录，请先注销目前的账号",
+            failMsg502: "注销前请先登录",
+            failMsg503: "注销失败",
+            successMsg200: "登录成功",
+            successMsg201: "注销成功"
+        },
+        methods: {
+            login: function () {
+                let user = {
+                    account: loginwindow.account,
+                    password: loginwindow.password
+                }
+
+                var jqResponse = $.ajax({
+                    url: '/login',
+                    type: 'POST',
+                    data: user,
+                    success: function (status) {
+                        if (status == "500") {
+                            $('#tips').text(loginwindow.failMsg500)
+                        }else if (status == "501") {
+                            $('#tips').text(loginwindow.failMsg501)
+                        } else {
+                            alert(loginwindow.successMsg200);
+                            $('#dynamic').append("<a id='toHome' href='/'></a>");
+                            $('#toHome').hide();
+                            $('#toHome')[0].click()
+                            console.log(status)
+                        }
+
+                    },
+                    error: function (status, textState, errorThrown) {
+                        alert(loginwindow.failMsg500)
+                        console.log(status)
+                        console.log(textState);
+                        console.log(errorThrown)
+                    }
+                })
+
+            },
+            logout: function () {
+                var jqResponse = $.ajax({
+                    url: '/logout',
+                    type: 'POST',
+                    success: function (status) {
+
+                        if (status == "201") {
+                            alert(loginwindow.successMsg201)
+
+                            $('#dynamic').append("<a id='toHome' href='/'></a>");
+                            $('#toHome').hide();
+                            $('#toHome')[0].click();
+                            console.log(msg);
+                        } else {
+                            $('#tips').text(loginwindow.failMsg502)
+                        }
+
+                    },
+                    error: function (status, textState, errorThrown) {
+                        $('#tips').text(loginwindow.failMsg503)
+
+                        console.log(status)
+                        console.log(textState);
+                        console.log(errorThrown)
+                    }
+                })
+            },
+            cleanTips: function () {
+                $('#tips').text("")
+            }
+        }
+    });
+</script>
+</body>
+</html>

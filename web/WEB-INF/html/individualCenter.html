@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>个人中心</title>
+
+    <script src="../js/vue.js"></script>
+    <script src="../js/jquery-3.5.1.js"></script>
+
+<!--    <link rel="stylesheet" href="../css/index.css">-->
+    <link rel="icon" href="../static/img/logoIcon.png"/>
+    <link rel="stylesheet" href="../css/indexh.css">
+    <link rel="stylesheet" href="../css/individualCenterStyle/global.css">
+    <link rel="stylesheet" href="../css/avatar.css">
+
+    <script src="../js/avatar-region.js"></script>
+
+
+</head>
+<body>
+
+    <div id="top-part">
+        <div id="title" style="display: inline-block">个人中心
+        </div>
+    </div>
+
+    <div id="narBarLabelBox">
+        <a href="/"><span>首页</span></a>
+        <div class="line"></div>
+        <a href="#"><span>活动中心</span></a>
+        <div class="line"></div>
+        <a href="http://www.gzpyp.edu.cn/pyzyjsxy/xydt/list.shtml"><span>番职资讯</span></a>
+        <div class="line"></div>
+        <a href="https://cas.gzpyp.edu.cn/tsg/index.shtml"><span>图书馆</span></a>
+        <div class="line"></div>
+        <a href="/fleaMarketPage"><span>二手市场</span></a>
+        <div class="line"></div>
+        <a href="/forumPage"><span>论坛</span></a>
+    </div>
+
+    <div id="avatar-bar">
+        <div id="vueAvatar" class="avatar-backboard" style="display: inline-block">
+            <avatar-region id="avatar" style="cursor: pointer; z-index: 1" title="头像" onclick="downAvatar()"></avatar-region>
+        </div>
+    </div>
+
+    <div id="revealable-userMessages" class="individual-center-content">
+        <div id="k">
+            <div :content="userObj" v-for="(value, key) in userObj" style="text-align: right">
+                {{key}}：
+            </div>
+            <div :content="creatingAccountDate" style="text-align: right">
+                creation time：
+            </div>
+        </div>
+        <div id="v">
+            <div :content="userObj" v-for="(value) in userObj" style="text-align: left">
+                {{value}}
+            </div>
+            <div :content="creatingAccountDate" style="text-align: left">
+                {{creatingAccountDate.year}} - {{creatingAccountDate.month}} - {{creatingAccountDate.day}}
+            </div>
+        </div>
+    </div>
+
+<!--    下载头像的询问弹窗-->
+    <div id="query-container" style="display: flex;justify-content: center;align-items: center ;text-align: center; margin: 0 auto;">
+        <div style="width: 500px; height: 400px; background-color: #00000099; position: fixed; top: 500px;border-radius: 20%;z-index: 10">
+            <div id="query-close" style="font-size: 3.5em; color: gray; position: relative; left: 400px;" >
+                <p style="cursor: pointer; width: 70px" onclick="hideQuery();">×</p>
+            </div>
+            <div id="query">
+                <label><h2 style="font-size: 50px; color: cornsilk">是否下载我的头像？</h2></label>
+                <div style="height: 100px"></div>
+                <button  onclick="doDownAvartar()" style="cursor: pointer;width: 100px; height: 100px; border-radius: 40%;font-size: 20px;font-weight: bold">下载</button>
+            </div>
+        </div>
+    </div>
+
+<!--    用来动态添加标签-->
+    <div id="dynamic" > </div>
+<script>
+    const avatar = new Vue({
+        el: '#vueAvatar',
+        data: {
+            failMsg500: "登录失败",
+            failMsg501: "您已登陆，若您想再次登录，请先注销目前的账号",
+            failMsg502: "注销前请先登录",
+            failMsg503: "注销失败",
+            successMsg200: "登录成功",
+            successMsg201: "注销成功"
+        }
+    });
+
+    const msg = new Vue({
+        el: '#revealable-userMessages',
+        data: {
+            userObj: {},
+            creatingAccountDate: {}
+        }
+    });
+
+</script>
+
+
+    <script>
+        var hideQuery = function () {
+            $('#query-container').hide();
+        }
+
+        var downAvatar = function(){
+            $('#query-container').show();
+        }
+
+        var doDownAvartar = function(){
+            $('#dynamic').append("<a id='loadAvatarDownLoader' href='/fileLoader/avatar/download'></a>")
+            $('#loadAvatarDownLoader').hide();
+            $('#loadAvatarDownLoader')[0].click();
+
+            $('#query-container').hide();
+        }
+
+
+        window.onload=function () {
+            hideQuery();
+
+            $.ajax({
+                url: '/preparedLoader/session/verifier',
+                type: 'POST',
+                success: function (areTrue) {
+                    if (areTrue == "true") {
+                        console.log("replace")
+                        //动态更新用户信息
+                        $.ajax({
+                            url: '/individual/center/loader/msg',
+                            type: 'POST',
+                            success: function (jsonDatas) {
+                                let userObj = JSON.parse(jsonDatas);
+                                let date = userObj.creatingAccountDate;
+
+                                if (userObj.creatingAccountDate != undefined){
+                                    console.log(userObj.creatingAccountDate)
+                                    delete userObj.creatingAccountDate
+                                }
+                                msg.userObj=userObj
+
+                                msg.creatingAccountDate.year = date.year
+                                msg.creatingAccountDate.month = date.monthValue
+                                msg.creatingAccountDate.day = date.dayOfMonth
+                                msg.creatingAccountDate.weekday = date.dayOfWeek
+                            }
+                        })
+
+                    } else if (areTrue == "false") {
+                        console.log("false")
+                        $('#dynamic').append("<a id='toLogin' href='/loginPage'></a>")
+                        $('#toLogin').hide();
+                        $('#toLogin')[0].click();
+                    }
+                }
+            });
+
+
+
+        }
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

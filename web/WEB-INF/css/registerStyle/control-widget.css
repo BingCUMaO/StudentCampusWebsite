@@ -1,0 +1,157 @@
+h2{
+    padding-left: 160px;
+    padding-top: 20px;
+    color: cornsilk;
+    text-shadow: #000 3px 4px 5px;
+}
+
+
+.uploadAvatar-outer{
+    color: #f86af9;
+
+    width: 100px;
+    height: 100px;
+
+    margin: 0 auto;
+}
+
+.uploadAvatar-inner{
+    cursor: pointer;
+    width: 100px;
+    height: 50px;
+
+    background-color: #80808099;
+
+
+    border-radius: 10%;
+    border: 1px solid #fff;
+
+    color: #f86af9;
+    font-family: "Bell MT";
+    font-weight: bold;
+    text-shadow: #000 3px 4px 5px;
+}
+
+.inputs{
+    cursor: pointer;
+
+    padding-top: 20px;
+    height: 100px;
+    margin: 0 auto;
+}
+
+.selections{
+    cursor: pointer;
+
+    font-family: "Bell MT";
+    font-size: larger;
+
+    width: 130px;
+    height: 100px;
+    margin: 0 auto;
+}
+
+.caption{
+    cursor: pointer;
+
+    color: #f86af9;
+    font-family: "Bell MT";
+    font-weight: bold;
+    /*text-shadow: #901ac690;*/
+    text-shadow: #000 3px 4px 5px;
+}
+
+.ageSelection{
+    width: 100px;
+    height: 20px;
+
+    background-color: #f8dcf8;
+    border: 1px solid white;
+    border-radius: 10%;
+
+    text-shadow: #fff 10px 4px 1px;
+}
+
+
+.ageOption{
+    background-color: #fff8dc99;
+    border: none;
+    pointer-events: none;
+}
+
+.buttons{
+    height: 50px;
+    width: 100px;
+
+    margin: 0 auto;
+}
+
+.register{
+    cursor: pointer;
+    height: 50px;
+    width: 100px;
+
+    font-family: "Bell MT";
+    font-size: larger;
+
+    border-radius: 45%;
+    border: 3px solid #f62df7;
+    background-color: #f86af9;
+}
+
+.login{
+    position: relative;
+    left: 10px;
+
+    cursor: pointer;
+    background-color: #7902f9;
+
+    border: 3px solid #7902f9;
+    border-radius: 40%;
+
+    color: cornsilk;
+    text-shadow: #000 3px 4px 5px;
+}
+
+.toHomePosition{
+    position: relative;
+    left: 20px;
+
+    height: 40px;
+    width: 40px;
+
+    margin: 0 auto;
+}
+
+.toHome{
+    width: 50px;
+
+    cursor: pointer;
+    background-color: #7902f9;
+
+    border: 3px solid #7902f9;
+    border-radius: 40%;
+
+    color: cornsilk;
+    text-shadow: #000 3px 4px 5px;
+}
+
+
+.tips{
+    cursor: pointer;
+
+    height: 50px;
+
+    text-align: center;
+    margin: 0 auto;
+
+    color: red;
+    font-family: "Bell MT";
+    font-weight: bold;
+    /*text-shadow: #901ac690;*/
+    text-shadow: #00000080 3px 4px 5px;
+}
+
+
+
+

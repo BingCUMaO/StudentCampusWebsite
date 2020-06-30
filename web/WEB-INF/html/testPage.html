@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <script src="../js/vue.js"></script>
+    <script src="../js/jquery-3.5.1.js"></script>
+    <script src="../js/jquery-binary-transport-1.0.js"></script>
+    <script src="../js/avatar-region.js"></script>
+
+    <script>
+        window.onload=function () {
+            var verifier = $('#skip');
+            // verifier.hide()
+            verifier.click();
+        }
+    </script>
+</head>
+
+
+<body>
+<div id="app">
+    <h2>蛤</h2>
+    <a id="skip" href="/preparedLoader/session/verifier" ><button>验证</button></a>
+    <a id="avatar" href="/preparedLoader/avatar" ><button>获取</button></a>
+
+    <button onclick="" >测试传输</button>
+
+
+    <avatar-region></avatar-region>
+</div>
+
+<script>
+
+
+
+
+    new Vue({
+        el : '#app'
+    })
+
+
+
+</script>
+
+</body>
+</html>

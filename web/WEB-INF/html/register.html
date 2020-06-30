@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>注册</title>
+
+    <link rel="icon" href="../static/img/logoIcon.png"/>
+    <link rel="stylesheet" href="../css/registerStyle/global.css">
+    <link rel="stylesheet" href="../css/registerStyle/control-widget.css">
+
+    <script src="../js/jquery-3.5.1.js"></script>
+    <script src="../js/jquery-form-min.js"></script>
+    <script src="../js/vue.js"></script>
+
+</head>
+<body>
+<div id="registerWindow" class="global">
+    <label><h2>注册</h2></label>
+
+    <div class="uploadAvatar-outer">
+        <form id="head-avatar" action="/uploadAvatar" method="post" enctype="multipart/form-data">
+            <input id="doSelect" type="file" accept="image/*" name="avatar" @change="uploadAvatar()"
+                   style="display: none">
+        </form>
+        <button id="areOkOfUpload" class="uploadAvatar-inner" @click="autoUpload()" style="font-size: 20px">上传头像
+        </button>
+    </div>
+
+    <div id="tips" class="tips"></div>
+
+    <table class="inputs" @click="cleanTips()">
+        <tr>
+            <td><label for="uaccount" class="caption">用户名：</label></td>
+            <td class="inputAccount"><input id="uaccount" v-model="userName" type="text" placeholder="请输入用户名"></td>
+        </tr>
+        <tr>
+            <td><label for="pwdA" class="caption">密码：</label></td>
+            <td class="inputPassword"><input id="pwdA" v-model="user_passwordA" type="password" placeholder="请输入密码">
+            </td>
+        </tr>
+        <tr>
+            <td><label for="pwdB" class="caption"></label></td>
+            <td class="inputPassword"><input id="pwdB" v-model="user_passwordB" type="password" placeholder="请再次输入密码">
+            </td>
+        </tr>
+    </table>
+
+
+    <div class="selections">
+        <label for="man" class="caption"><input id="man" v-model="sex" type="radio" value="man">男</label>
+        <label for="feman" class="caption"><input id="feman" v-model="sex" type="radio" value="feman">女</label>
+        <br/>
+
+        <!--        年龄，默认为10岁-->
+        <label for="age" class="caption">
+            年龄：
+            <select id="age" class="ageSelection" v-model="age" name="age" id="age">
+                <option class="ageOption" v-for="n in 120">{{n}}</option>
+            </select>
+        </label>
+
+        <br/>
+    </div>
+
+
+    <div class="buttons">
+
+        <button @click="register()" class="register">Register</button>
+        <br/><br/>
+        <a href="/loginPage">
+            <button class="login">返回登录</button>
+        </a><br/>
+        <a href="/" class="toHomePosition">
+            <button class="toHome">返回主页</button>
+        </a>
+    </div>
+</div>
+
+
+<!--用来动态添加标签-->
+<div id="dynamic"></div>
+
+<script>
+    var rgtr = new Vue({
+        el: '#registerWindow',
+        data: {
+            userName: "",
+            user_passwordA: "",
+            user_passwordB: "",
+            age: 10,
+            sex: "man",
+            avatarPath: ""
+        },
+        methods: {
+            uploadAvatar: function () {
+                console.log("uploadAvatar")
+
+                $('#head-avatar').ajaxSubmit(function (path) {
+                    rgtr.avatarPath = path
+                    console.log(path)
+                    $('#areOkOfUpload').text("√")
+                })
+
+            },
+            autoUpload: function () {
+                $('#doSelect').click()
+                // this.uploadAvatar();
+            },
+            register: function () {
+
+                if (rgtr.userName.length == 0 || rgtr.user_passwordA.length == 0 || rgtr.user_passwordB.length == 0) {
+                    console.log("userName tooLong");
+                    $('#tips').text("内容不能为空");
+                    return
+                } else if (rgtr.userName.length > 30) {
+                    // 1、校验用户名、密码是否大于30个字符，若是，则提示字符数过长
+                    console.log("userName tooLong");
+                    $('#tips').text("用户名过长");
+                    $('#tips').focus();
+                    return;
+                } else if (rgtr.user_passwordA.length > 30) {
+                    // 2、校验user_passwordA和user_passwordB是否一致，否则提示错误
+                    console.log("pwdA too long");
+                    $('#tips').text("密码过长  请勿超30个字符");
+                    $('#tips').focus();
+                    return;
+                } else if (rgtr.user_passwordA != rgtr.user_passwordB) {
+                    // 3、当密码一致时，要求返回的是user_passwordA（因为有时用户会擅自更改校验代码）
+                    console.log("pwd conflict");
+                    $('#tips').text("请检查两次输入的密码是否一致");
+                    $('#tips').focus();
+                    return;
+                }
+
+                // 数据校验没问题，tip设置为空
+                $('#tips').text("")
+
+                // 如果数据没问题，就把数据封装成一个新对象，并将该对象以JSON显示传输给服务器
+                let dataObject = {
+                    userName: rgtr.userName,
+                    password: rgtr.user_passwordA,
+                    sex: rgtr.sex,
+                    age: rgtr.age,
+                    avatarPath: rgtr.avatarPath
+                };
+                console.log("dataObject --- avatarPath：" + dataObject.avatarPath)
+
+                var jqReponse = $.ajax({
+                    url: '/register',
+                    type: 'POST',
+                    data: dataObject,
+                    // contentType: "text/html; charset=utf-8",
+                    success: function (msg) {
+                        alert(msg)
+                        $('#dynamic').append("<a id='toHome' href='/'></a>")
+                        $('#toHome').hide();
+                        $('#toHome')[0].click()
+                        console.log(msg)
+                    },
+                    error: function (msg, textState, errorThrown) {
+                        alert(msg)
+                        console.log(msg)
+                        console.log(textState);
+                        console.log(errorThrown)
+                    }
+                })
+
+                console.log(jqReponse)
+            },
+            cleanTips: function () {
+                $('#tips').text("")
+            }
+        }
+
+    });
+</script>
+</body>
+</html>

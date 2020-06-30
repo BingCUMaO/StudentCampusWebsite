@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>番禺跳蚤市场</title>
+
+    <script src="../js/vue.js"></script>
+    <script src="../js/jquery-3.5.1.js"></script>
+
+    <link rel="icon" href="../static/img/logoIcon.png" />
+    <link rel="stylesheet" href="../css/indexh.css">
+    <link rel="stylesheet" href="../css/template/topPart.css">
+    <link rel="stylesheet" href="../css/avatar.css">
+
+    <script src="../js/avatar-region.js"></script>
+    <script src="../js/fleaProductList-region.js"></script>
+
+    <link rel="stylesheet" href="../css/fleaMarketStyle/global.css">
+
+</head>
+<body>
+
+<!-- 标题 -->
+<div id="top-part">
+    <div id="title" style="display: inline-block">番禺跳蚤市场
+    </div>
+</div>
+
+<div id="narBarLabelBox">
+    <a href="/"><span>首页</span></a>
+    <div class="line"></div>
+    <a href="javascript:void(0)" onclick="checkLoginStatus()"><span>个人中心</span></a>
+    <div class="line"></div>
+    <a href="#"><span>活动中心</span></a>
+    <div class="line"></div>
+    <a href="http://www.gzpyp.edu.cn/pyzyjsxy/xydt/list.shtml"><span>番职资讯</span></a>
+    <div class="line"></div>
+    <a href="https://cas.gzpyp.edu.cn/tsg/index.shtml"><span>图书馆</span></a>
+    <div class="line"></div>
+    <a href="/forumPage"><span>论坛</span></a>
+</div>
+
+<div id="avatar-bar">
+    <div id="vueAvatar" class="avatar-backboard" style="display: inline-block">
+        <avatar-region id="avatar" style="cursor: pointer; z-index: 1" title="头像"
+                       onclick="downAvatar()"></avatar-region>
+    </div>
+</div>
+
+
+
+<!--    下载头像的询问弹窗-->
+<div id="query-container" style="display: flex;justify-content: center;align-items: center ;text-align: center; margin: 0 auto;">
+    <div style="width: 500px; height: 400px; background-color: #00000099; position: fixed; top: 500px;border-radius: 20%;z-index: 10;">
+        <div id="query-close" style="font-size: 3.5em; color: gray; position: relative; left: 400px;" >
+        <p style=" cursor: pointer; width: 70px" onclick="hideQuery();">×</p>
+    </div>
+    <div id="query">
+        <label>
+            <h2 style="font-size: 50px; color: cornsilk">是否下载我的头像？</h2>
+        </label>
+        <div style="height: 100px"></div>
+        <button onclick="doDownAvartar()" style="cursor: pointer;width: 100px; height: 100px; border-radius: 40%;font-size: 20px;font-weight: bold">下载</button>
+    </div>
+</div>
+</div>
+<!--    用来动态添加标签-->
+<div id="dynamic"> </div>
+
+<!-- narBarLabelBox中各个跳转链接的过程函数 -->
+<script>
+
+    // 个人中心的身份验证代码
+    var checkLoginStatus = function () {
+        $.ajax({
+            url: '/preparedLoader/session/verifier',
+            type: 'POST',
+            success: function (areTrue) {
+                if (areTrue == "true") {
+
+                    $('#dynamic').append(
+                        "<a id='individual' href='/individual/center'></a>"
+                    );
+                    $('#individual').hide();
+                    $('#individual')[0].click();
+                } else if (areTrue == "false") {
+                    $('#dynamic').append(
+                        "<a id='toLogin' href='/loginPage'></a>"
+                    );
+                    $('#toLogin').hide();
+                    $('#toLogin')[0].click();
+                }
+            }
+        })
+    }
+
+    // 若narBarLabelBox中的其他请求有一些单独的操作，可在这儿拓展
+    //...
+    //...
+    //...
+</script>
+<script src="../js/template.js"></script>
+<!-----------------------------------------------分割------------------------------------------------->
+
+
+
+
+
+
+
+    <div id="content" class="content-backboard">
+<!--        <flea-product v-for="n in 6"></flea-product>-->
+
+        <div v-for="(cover, index) in covers">
+            <div style="display: flex; justify-content: center; margin-top: 20px;margin-bottom: 20px">
+                <div style="width: 80%; height: 500px; background-color: white; border-radius: 10%">
+                    <div id="showLayout" style="display: flex;place-content: center">
+                        <img :src="cover.coverPicurePath" style="cursor: pointer; border-radius: 5%;width: 400px;height: 400px;position: relative; top: 50px">
+                        <div style="width: 500px;height: 400px;position: relative; top: 60px;left: 50px">
+                            <h1 style="cursor: pointer;font-family: 'Bell MT';font-size: 60px">{{cover.title}}</h1>
+                            <label style="position: relative;top: 50px">
+                                销售时间：{{cover.startTime.year}}-{{cover.startTime.monthValue}}-{{cover.startTime.dayOfMonth}}   {{cover.startTime.dayOfWeek}}
+                            </label>
+                            <label style="position: relative; top: 100px; color: red">
+                                <h2>售价：￥{{cover.price}} </h2>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<script>
+    var content = new Vue({
+        el: '#content',
+        data: {
+            covers: []
+        },
+        mounted: function () {
+            $.ajax({
+                url: '/flea/market/loader/covers',
+                type: 'POST',
+                success: function (jsonDatas) {
+                    content.covers = JSON.parse(jsonDatas)
+                    for(let idex of content.covers){
+                        content.covers[idex].coverPicurePath = require(content.covers[idex].coverPicurePath)
+                    }
+                    console.log(content.covers)
+                },
+                error: function () {
+                    alert("Page Error")
+                }
+            })
+        }
+    });
+</script>
+
+
+</body>
+</html>

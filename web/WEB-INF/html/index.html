@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>广州番职职业技术学院(伪)</title>
+    <script src="../js/jquery-3.5.1.js"></script>
+    <script src="../js/navi.js"></script>
+    <link rel="icon" href="../static/img/logoIcon.png" sizes="32*32">
+    <link rel="stylesheet" href="../css/index.css">
+    <link rel="stylesheet" href="../css/indexh.css">
+    <script src="../js/functionTools.js"></script>
+    <script src="../js/vue.js"></script>
+    <script src="../js/index.js"></script>
+    <script src="../js/indexh.js"></script>
+    <script src="../js/avatar-region.js"></script>
+
+</head>
+
+<body>
+
+    <div id="head">
+        <div id="dynamic"></div>
+        <a href="/"><img src="/static/img/schoolLogo.png" alt="logo" id="logoA" /></a>
+        <div id="headRight">
+            <div id="searchBarBox">
+                <div class="searchBarBox">
+                    <label for="searchBar"><img src="/static/img/searchImg.png" alt="searchImg"></label>
+                    <input type="text" id="searchBar" placeholder="请输入关键字" />
+                </div>
+                <a  href="javascript:void(0)" onclick="checkLoginStatus()" class="defaultAvatarA">
+                    <avatar-region id="avatar-config" title="个人中心"></avatar-region>
+<!--                    <img src="/static/img/defaultAvatar.png" alt="" id="defaultAvatar" width="73px" height="73px" title="个人中心">-->
+                </a>
+                <span>
+                    <label id="userStatusOperation" for="userStatus">
+                        请<a id="userStatus" href="/loginPage" >    登录    </a>
+                    </label>
+
+                </span>
+            </div>
+            <div>
+                <!-- 登录注册 -->
+            </div>
+        </div>
+    </div>
+    <div id="narBarLabelBox">
+        <a href="/"><span>首页</span></a>
+        <div class="line"></div>
+        <a href="javascript:void (0)" onclick="checkLoginStatus()"><span>个人中心</span></a>
+        <div class="line"></div>
+        <a href="#"><span>活动中心</span></a>
+        <div class="line"></div>
+        <a href="http://www.gzpyp.edu.cn/pyzyjsxy/xydt/list.shtml"><span>番职资讯</span></a>
+        <div class="line"></div>
+        <a href="https://cas.gzpyp.edu.cn/tsg/index.shtml"><span>图书馆</span></a>
+        <div class="line"></div>
+        <a href="/fleaMarketPage"><span>二手市场</span></a>
+        <div class="line"></div>
+        <a href="/forumPage"><span>论坛</span></a>
+    </div>
+    <div id="bgPicture">
+        <div class="label label1">
+            <span>虎</span>
+            <span>门</span>
+        </div>
+        <div class="label label2">
+            <span>罗</span>
+            <span>马</span>
+            <span>广</span>
+            <span>场</span>
+        </div>
+        <img src="/static/img/background/school.jpg">
+    </div>
+    <div class="pzzxq">
+        <span>番职资讯</span>
+    </div>
+    <div class="content">
+        <div class="newsColumnLeft">
+            <div class="newsColumnNewsLabel">
+                <a href="/" target="_block">【周知】《广东省学校安全条例》公布！2020年9月1日起施行</a>
+                <span>正在收看...</span>
+            </div>
+            <div class="newsColumnNewsLabel">
+                <a href="/" target="_block">何友义率队赴商汤、华为两大企业调研</a>
+                <span>正在收看...</span>
+            </div>
+        </div>
+        <div class="newsColumnCenter">
+            <a href="#" target="_block"><img class="newsColumnPicture" Pindex="0" width="600px" /></a>
+            <img src="/static/img/TVborder.png" alt="TVborder" class="TVborder" />
+            <div class="newsColumnPictureLabel">
+                <a href="#" target="_block"><span></span></a>
+            </div>
+        </div>
+        <div class="newsColumnRight">
+            <div class="newsColumnNewsLabel">
+                <a href="/" target="_block">云签约！姊妹番禺职院“无缝对接”湖北职院毕业生就业创业</a>
+                <span>正在收看...</span>
+            </div>
+            <div class="newsColumnNewsLabel">
+                <a href="/" target="_block">学生作品以四个之“最”向意米兰世博会进发 </a>
+                <span>正在收看...</span>
+            </div>
+        </div>
+    </div>
+    <div class="pzzxq">
+        <span>活动中心</span>
+    </div>
+    <div class="content">
+        <div class="activity">
+            <a href="#" target="_block" class="actPicture">
+                <img src="/static/img/act1.jpeg">
+            </a>
+            <div class="pictureLabel">
+                <span>我与国旗合个影（线上）</span>
+                <span>活动级别：院系级</span>
+                <span>活动时间：7-04 00：00 ~ 8-07 23：59</span>
+                <span>活动地点：广州番禺职业技术学院</span>
+                <span>类型：文体活动 — 文体活动</span>
+                <span>发布者：张三</span>
+                <span>【评审制】 已报名666人/ 不限人数 </span>
+                <a href="#">详细>></a>
+            </div>
+        </div>
+        <div class="activity">
+            <a href="#" target="_block" class="actPicture">
+                <img src="/static/img/act2.jpg">
+            </a>
+            <div class="pictureLabel">
+                <span>第二届信息工程学院三大社团联谊晚会</span>
+                <span>活动级别：院系级</span>
+                <span>活动时间：7-08 19：20 ~ 7-08 22：00</span>
+                <span>活动地点：西区食堂二楼</span>
+                <span>类型：文体活动 — 文体活动</span>
+                <span>发布者：张三</span>
+                <span>【评审制】 【报名制】 已报名233人/ 不限人数 </span>
+                <a href="">详细>></a>
+            </div>
+        </div>
+        <div class="activity">
+            <a href="#" target="_block" class="actPicture">
+                <img src="/static/img/act3.jpg">
+            </a>
+            <div class="pictureLabel">
+                <span>信息工程学院校运会</span>
+                <span>活动级别：院系级</span>
+                <span>活动时间：9-14 08：00 ~ 9-15 18：00</span>
+                <span>活动地点：广州番禺职业技术学院风雨操场</span>
+                <span>类型：文体活动 — 文体活动</span>
+                <span>发布者：张三</span>
+                <span>【评审制】 已报名233人/ 不限人数 </span>
+                <a href="">详细>></a>
+            </div>
+        </div>
+    </div>
+    <script>
+        var activ = document.getElementsByClassName("activity")
+        drag(activ[2]);
+        drag(activ[0]);
+    </script>
+    <div class="copyright">
+        <p>© 2020 by WBL .All Rights Reserved</p>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--以下是网页右上角中用来验证用户身份的相关代码，并且写了相应的头像获取操作-->
+    <script>
+        var head = new Vue({
+            el: '#head',
+            data: {
+                failMsg500: "登录失败",
+                failMsg501: "您已登陆，若您想再次登录，请先注销目前的账号",
+                failMsg502: "注销前请先登录",
+                failMsg503: "注销失败",
+                successMsg200: "登录成功",
+                successMsg201: "注销成功"
+            },
+            mounted : function () {
+                $.ajax({
+                    url: '/preparedLoader/session/verifier',
+                    type : 'POST',
+                    success: function (areTrue) {
+                        if (areTrue == "true") {
+                            console.log("replace")
+                            $('#userStatus').remove();
+                            // $('#userStatusOperation').append("<button id=\"userStatus\"  onclick='logout()' style='background: #ffffff00;'>    注销    </button>");
+                            $('#userStatusOperation').append("<a id=\"userStatus\" href='javascript:void(0)'  onclick='logout()' >    注销    </a>");
+                        }
+                    }
+                })
+            }
+        })
+
+        // 主页中的注销操作，含有组件中没有的附加动作。
+        // 它需要根据登录状态更改操作链接，所以不能使用准备好的组件，只好根据需求重新写注销功能
+
+        //还有在append标签时的字符串中包含v-on的事件绑定的话，该事件到最后貌似不会被触发。
+        // 所以我直接append了JS原生的事件绑定
+        var logout =  function () {
+            $.ajax({
+                url: '/logout',
+                type: 'POST',
+                success: function (status) {
+
+                    if (status == "201") {
+                        alert(head.successMsg201)
+
+                        $('#dynamic').append("<a id='toHome' href='/'></a>");
+                        $('#toHome').hide();
+                        $('#toHome')[0].click();
+                        console.log(msg);
+                    } else {
+                        alert(head.failMsg502)
+                    }
+
+                },
+                error: function (status, textState, errorThrown) {
+                    $('#tips').text(head.failMsg503)
+
+                    console.log(status)
+                    console.log(textState);
+                    console.log(errorThrown)
+                }
+            })
+        }
+    </script>
+
+
+<!--    个人中心的身份验证代码-->
+    <script>
+        var checkLoginStatus = function () {
+            $.ajax({
+                url: '/preparedLoader/session/verifier',
+                type : 'POST',
+                success: function (areTrue) {
+                    if (areTrue == "true") {
+                        $('#dynamic').append("<a id='individual' href='/individual/center'></a>");
+                        $('#individual').hide();
+                        $('#individual')[0].click();
+                    } else if (areTrue=="false"){
+                        $('#dynamic').append("<a id='toLogin' href='/loginPage'></a>");
+                        $('#toLogin').hide();
+                        $('#toLogin')[0].click();
+                    }
+                }
+            })
+        }
+    </script>
+</body>
+
+</html>

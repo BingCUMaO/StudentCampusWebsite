@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="top.BinGCU.dao.UserMapper">
+
+    <insert id="insertOneUser" parameterType="top.BinGCU.pojo.User">
+        insert into user(user_name, user_account, user_password, user_sex, user_age, avatar_path)
+        values (
+         #{user.userName},
+         #{user.account},
+          #{user.password},
+          #{user.sex},
+          #{user.age},
+          #{user.avatarPath}
+          );
+    </insert>
+
+    <select id="queryUserByUserAccount" resultMap="userAlias">
+        select * from user
+        where user_account = #{userAccount}
+    </select>
+    <!--    User的property与column之间的映射-->
+    <resultMap id="userAlias" type="top.BinGCU.pojo.User">
+        <result column="user_id" property="userID"/>
+        <result column="user_name" property="userName"/>
+        <result column="user_account" property="account"/>
+        <result column="user_password" property="password"/>
+        <result column="user_sex" property="sex"/>
+        <result column="user_age" property="age"/>
+        <result column="creating_account_date" property="creatingAccountDate"/>
+        <result column="avatar_path" property="avatarPath"/>
+    </resultMap>
+
+    <select id="queryUserAccountAndPwd" resultType="top.BinGCU.pojo.User" parameterType="top.BinGCU.pojo.User" resultMap="userAlias">
+        select * from user
+        where user_account = #{user.account} AND user_password = #{user.password}
+    </select>
+
+    <select id="queryAvatarPathByUserAccountStr" resultType="java.lang.String">
+        select avatar_path from user
+        where user_account = #{account}
+    </select>
+
+    <select id="queryUserNameByUserAccountStr" resultType="java.lang.String">
+        select user_name  from user
+        where user_account= #{account}
+    </select>
+
+
+</mapper>

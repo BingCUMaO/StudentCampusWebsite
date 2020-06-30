@@ -1,0 +1,20 @@
+body{
+    background-image: url("../../static/img/background/loginBackground.jpg");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-attachment: fixed;
+
+}
+
+.global{
+    height: 550px;
+    width: 600px;
+
+    margin: 150px auto;
+    background-color: #80808099;
+
+    border-radius: 20%;
+
+    box-shadow:  #e203ff50 10px -6px 5px;
+}
+

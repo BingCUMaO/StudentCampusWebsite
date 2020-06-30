@@ -1,0 +1,140 @@
+h2{
+    padding-left: 160px;
+    padding-top: 20px;
+    color: cornsilk;
+    text-shadow: #000 3px 4px 5px;
+}
+
+.avatar-config {
+    cursor: pointer;
+    height: 73px;
+    width: 73px;
+
+    position: relative;
+
+
+    margin: 0 auto;
+
+}
+
+.username-config{
+    cursor: pointer;
+    height: 40px;
+    width: 700px;
+
+    position: relative;
+    left: -70px;
+
+    text-align: center;
+    margin: 0 auto;
+}
+
+
+.inputs{
+    height: 100px;
+    margin: 0 auto;
+}
+
+.caption{
+    color: #f86af9;
+    font-family: "Bell MT";
+    font-weight: bold;
+    /*text-shadow: #901ac690;*/
+    text-shadow: #000 3px 4px 5px;
+}
+
+.inputAccount{
+    height: 60px;
+}
+
+.inputPassword{
+    height: 50px;
+}
+
+.buttons{
+    height: 80px;
+    width: 200px;
+
+    margin: 0 auto;
+}
+
+.register{
+    cursor: pointer;
+    background-color: #7902f9;
+
+    border: 3px solid #7902f9;
+    border-radius: 40%;
+
+    color: cornsilk;
+    text-shadow: #000 3px 4px 5px;
+}
+
+.login{
+    cursor: pointer;
+    height: 50px;
+    width: 100px;
+
+    font-family: "Bell MT";
+    font-size: larger;
+
+    border-radius: 45%;
+    border: 3px solid #f62df7;
+    background-color: #f86af9;
+}
+
+.logout{
+    cursor: pointer;
+    background-color: #7902f9;
+
+    border: 3px solid #7902f9;
+    border-radius: 40%;
+
+    color: cornsilk;
+    text-shadow: #000 3px 4px 5px;
+
+
+}
+
+
+.toHomePosition{
+    height: 40px;
+    width: 40px;
+    padding-left: 45%;
+
+    margin: 0 auto;
+}
+
+.toHome{
+    width: 50px;
+
+    cursor: pointer;
+    background-color: #7902f9;
+
+    border: 3px solid #7902f9;
+    border-radius: 40%;
+
+    color: cornsilk;
+    text-shadow: #000 3px 4px 5px;
+}
+
+
+
+.tips{
+    cursor: pointer;
+
+    height: 50px;
+
+    text-align: center;
+    margin: 0 auto;
+
+    color: red;
+    font-family: "Bell MT";
+    font-weight: bold;
+    /*text-shadow: #901ac690;*/
+    text-shadow: #00000080 3px 4px 5px;
+}
+
+
+
+
+

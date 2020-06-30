@@ -1,0 +1,287 @@
+<!-- by 吴柏龙 -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>论坛</title>
+    <link rel="icon" href="../static/img/logoIcon.jpg" sizes="32*32">
+    <script src="../js/jquery-3.5.1.js"></script>
+    <script src="../js/vue.js"></script>
+    <script src="../js/navi.js"></script>
+    <!-- 头 -->
+    <link rel="stylesheet" href="../css/indexh.css">
+    <script src="../js/indexh.js"></script>
+    <!-- forum -->
+    <link rel="stylesheet" href="../css/forum.css">
+    <script src="../js/forum.js"></script>
+
+    <script src="../js/avatar-region.js"></script>
+</head>
+
+<body>
+    <div id="head">
+        <div id="dynamic"></div>
+        <a href="/"><img src="../static/img/schoolLogo.png" alt="logo" id="logoA" /></a>
+<!------------------------------------------------------------------------------------------------------------->
+        <div id="headRight">
+            <div id="searchBarBox">
+                <div class="searchBarBox">
+                    <label for="searchBar"><img src="/static/img/searchImg.png" alt="searchImg"></label>
+                    <input type="text" id="searchBar" placeholder="请输入关键字" />
+                </div>
+                <a  href="javascript:void(0)" onclick="checkLoginStatus()" class="defaultAvatarA">
+                    <avatar-region id="avatar-config" title="个人中心"></avatar-region>
+                    <!--                    <img src="/static/img/defaultAvatar.png" alt="" id="defaultAvatar" width="73px" height="73px" title="个人中心">-->
+                </a>
+                <span>
+                    <label id="userStatusOperation" for="userStatus">
+                        请<a id="userStatus" href="/loginPage" >    登录    </a>
+                    </label>
+
+                </span>
+            </div>
+            <div>
+                <!-- 登录注册 -->
+            </div>
+        </div>
+<!-------------------------------------------------------------------------------------------------------------------->
+    </div>
+    <div id="narBarLabelBox">
+        <a href="/"><span>首页</span></a>
+        <div class="line"></div>
+        <a href="javascript:void (0)" onclick="checkLoginStatus()"><span>个人中心</span></a>
+        <div class="line"></div>
+        <a href="#"><span>活动中心</span></a>
+        <div class="line"></div>
+        <a href="http://www.gzpyp.edu.cn/pyzyjsxy/xydt/list.shtml"><span>番职资讯</span></a>
+        <div class="line"></div>
+        <a href="https://cas.gzpyp.edu.cn/tsg/index.shtml"><span>图书馆</span></a>
+        <div class="line"></div>
+        <a href="/fleaMarketPage"><span>二手市场</span></a>
+        <div class="line"></div>
+        <a href="/forumPage"><span>论坛</span></a>
+    </div>
+    <div id="backHeadBox">
+        <img src="../static/img/backHeadPic.png" title="回到顶部" />
+    </div>
+    <div id="forumContent">
+        <div id="forumPost">
+            <div id="postTitleBox">
+                <div class="labelHead">
+                    <span>全部主题</span>
+                    <span>最新</span>
+                    <span>热帖</span>
+                    <span>更多</span>
+                </div>
+                <div id="postTitleButton">
+                    <span><a href="">信工学院：开展诚信考试动员会</a></span>
+                    <span><a href="">学生处：学生积极参与扶贫济困捐款</a></span>
+                    <span><a href="">旅游商务学院：召开专业年审工作推进会议</a></span>
+                    <span><a href="">管理学院：严肃考风考纪 诚信立言立行</a></span>
+                    <span><a href="">智能制造学院：完成汽车专业领域“1+X”证书制度试点任务</a></span>
+                    <span><a href="">管理学院：开展系列主题班会</a></span>
+                    <span><a href="">继教学院：赴中科教育（集团）调研</a></span>
+                    <span><a href="">招募三下乡志愿者</a></span>
+                </div>
+            </div>
+            <div id="authorLabelBox">
+                <span id="authorLabel">作者</span>
+                <div id="author">
+                    <span><a href="">信工学院</a></span>
+                    <span><a href="">学生处</a></span>
+                    <span><a href="">旅游商务学院</a></span>
+                    <span><a href="">管理学院</a></span>
+                    <span><a href="">智能制造学院</a></span>
+                    <span><a href="">管理学院</a></span>
+                    <span><a href="">继教学院</a></span>
+                    <span><a href="">软件协会</a></span>
+                </div>
+            </div>
+            <div id="pubdateBox">
+                <span>发帖时间</span>
+                <span class="pubdate">2019-02-03</span>
+                <span class="pubdate">2019-02-03</span>
+                <span class="pubdate">2019-02-03</span>
+                <span class="pubdate">2019-02-03</span>
+                <span class="pubdate">2019-02-03</span>
+                <span class="pubdate">2019-02-03</span>
+                <span class="pubdate">2019-02-03</span>
+                <span class="pubdate">2019-02-03</span>
+            </div>
+        </div>
+
+        <div id="theUserDynamicBox">
+<!--            <div id="userBox">-->
+<!--                <a href="#">-->
+<!--                    <img :src="activeUserAvatar" title="个人中心" class="userAvatar" />-->
+<!--                    <span>{{activeUserName}}</span>-->
+<!--                </a>-->
+<!--            </div>-->
+            <div id="shareDynamicBox">
+                <input type="text" placeholder="有什么想和大家分享的？" v-model="inputText" />
+                <div>
+                    <img src="../static/img/submitPic.png" alt="图片上传" title="图片上传">
+                    <button @click="submitDynamic">发帖</button>
+                </div>
+            </div>
+            <div v-for="(item, index) in users" :key="index" class="otherUserDynamicBox">
+                <div class="otherUserDynamicBoxT">
+                    <a href="#">
+                        <img :src="item.avatarSrc" class="userAvatar" />
+                    </a>
+                    <a href="#">
+                        <span>{{item.userName}}</span>
+                    </a>
+                    <img src="../static/img/more.png" class="morePic" @click="openMoreNarBar(index)">
+                    <div class="moreNarBar">
+                        <span>关注</span>
+                        <span>举报</span>
+                    </div>
+                </div>
+                <div class="otherUserDynamicBoxB">
+                    <div class="boxBInformation">
+                        <span>
+                            {{item.dynamicInformation}}
+                        </span>
+                    </div>
+                    <div class="boxBPicture">
+                        <a href="#">
+                            <img :src="item.dynamicPic" />
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+        var searchBarBox = new Vue({
+            el: '#searchBarBox'
+        })
+    </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!--以下是网页右上角中用来验证用户身份的相关代码，并且写了相应的头像获取操作-->
+    <script>
+        var head = new Vue({
+            el: '#head',
+            data: {
+                failMsg500: "登录失败",
+                failMsg501: "您已登陆，若您想再次登录，请先注销目前的账号",
+                failMsg502: "注销前请先登录",
+                failMsg503: "注销失败",
+                successMsg200: "登录成功",
+                successMsg201: "注销成功"
+            },
+            mounted : function () {
+                $.ajax({
+                    url: '/preparedLoader/session/verifier',
+                    type : 'POST',
+                    success: function (areTrue) {
+                        if (areTrue == "true") {
+                            console.log("replace")
+                            $('#userStatus').remove();
+                            // $('#userStatusOperation').append("<button id=\"userStatus\"  onclick='logout()' style='background: #ffffff00;'>    注销    </button>");
+                            $('#userStatusOperation').append("<a id=\"userStatus\" href='javascript:void(0)'  onclick='logout()' >    注销    </a>");
+                        }
+                    }
+                })
+            }
+        })
+
+        // 主页中的注销操作，含有组件中没有的附加动作。
+        // 它需要根据登录状态更改操作链接，所以不能使用准备好的组件，只好根据需求重新写注销功能
+
+        //还有在append标签时的字符串中包含v-on的事件绑定的话，该事件到最后貌似不会被触发。
+        // 所以我直接append了JS原生的事件绑定
+        var logout =  function () {
+            $.ajax({
+                url: '/logout',
+                type: 'POST',
+                success: function (status) {
+
+                    if (status == "201") {
+                        alert(head.successMsg201)
+
+                        $('#dynamic').append("<a id='toHome' href='/'></a>");
+                        $('#toHome').hide();
+                        $('#toHome')[0].click();
+                        console.log(msg);
+                    } else {
+                        alert(head.failMsg502)
+                    }
+
+                },
+                error: function (status, textState, errorThrown) {
+                    $('#tips').text(head.failMsg503)
+
+                    console.log(status)
+                    console.log(textState);
+                    console.log(errorThrown)
+                }
+            })
+        }
+    </script>
+
+
+    <!--    个人中心的身份验证代码-->
+    <script>
+        var checkLoginStatus = function () {
+            $.ajax({
+                url: '/preparedLoader/session/verifier',
+                type : 'POST',
+                success: function (areTrue) {
+                    if (areTrue == "true") {
+                        $('#dynamic').append("<a id='individual' href='/individual/center'></a>");
+                        $('#individual').hide();
+                        $('#individual')[0].click();
+                    } else if (areTrue=="false"){
+                        $('#dynamic').append("<a id='toLogin' href='/loginPage'></a>");
+                        $('#toLogin').hide();
+                        $('#toLogin')[0].click();
+                    }
+                }
+            })
+        }
+    </script>
+</body>
+
+</html>
+<!-- by 吴柏龙 -->

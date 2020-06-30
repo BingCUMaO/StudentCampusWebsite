@@ -1,0 +1,8 @@
+body{
+    background-image: url("../../static/img/background/fleaMarketBackground.jpg");
+    background-size: cover;
+}
+
+.content-backboard{
+    width: 1500px; background-color: #00000099;
+}

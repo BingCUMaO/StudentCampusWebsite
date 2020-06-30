@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>大大大主页的title</title>
+
+    <script src="/js/vue.js"></script>
+    <script src="/js/jquery-3.5.1.js"></script>
+
+    <script src="../js/vue.js"></script>
+    <script src="../js/jquery-3.5.1.js"></script>
+</head>
+<body>
+    <h2>大大大~</h2>
+    <h4>主页</h4>
+
+    <div id="to">
+
+<!--        两种法子-->
+        <a href="/loginPage"><button>登陆</button></a>
+        <form action="/registerPage"><input type="submit" value="注册"></form>
+        <button @click="logout()">注销</button>
+
+
+    </div>
+    <img src="../static/img/act1.jpeg" alt="lalalal">
+
+
+    <script>
+        var loginwindow = new Vue({
+            el: '#to',
+            methods: {
+                logout: function () {
+                    var jqResponse = $.ajax({
+                        url: '/logout',
+                        type: 'POST',
+                        success: function (msg) {
+                            alert(msg)
+                            console.log(msg)
+                        },
+                        error: function (msg, textState, errorThrown) {
+                            alert(msg)
+                            console.log(msg)
+                            console.log(textState);
+                            console.log(errorThrown)
+                        }
+                    })
+                }
+            }
+        });
+    </script>
+</body>
+</html>

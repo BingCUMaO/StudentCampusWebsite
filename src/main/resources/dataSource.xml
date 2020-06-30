@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        https://www.springframework.org/schema/context/spring-context.xsd">
+
+
+<!--    配置数据库相关的properties-->
+    <context:property-placeholder location="mysql.properties"/>
+<!--    配置自动扫描dao包位置-->
+    <context:component-scan base-package="top.BinGCU.dao"/>
+
+<!--    配置数据源-->
+    <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <property name="driverClassName" value="${jdbc.driver}"/>
+        <property name="url" value="${jdbc.url}"/>
+        <property name="username" value="${jdbc.username}"/>
+        <property name="password" value="${jdbc.password}"/>
+     </bean>
+
+
+<!--    配置SqlSessionFactory-->
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="configLocation" value="mybatis.xml"/>
+    </bean>
+
+
+
+
+    <!--    <bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">-->
+    <!--        <constructor-arg ref="sqlSessionFactory" />-->
+    <!--    </bean>-->
+
+<!--    配置sqlSession-->
+    <!--    使用了这个，而不是使用sqlSessionTemplate，就可以不用写dao的Impl了-->
+    <bean id="mapperScannerConfigurer" class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
+        <property name="basePackage" value="top.BinGCU.dao"/>
+     </bean>
+
+
+</beans>
